@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood-Based Joke Generator</title>
+    <p>Back to Page
+        <a href="scratch.html">Cereal Page</a>
+    </p>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .mood-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        #happy-btn { background-color: #FFD700; }
+        #sad-btn { background-color: #87CEEB; }
+        #excited-btn { background-color: #FF69B4; }
+        #tired-btn { background-color: #DDA0DD; }
+
+        #joke-display {
+            font-size: 18px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Generate a joke based on the mood you're in!
+    </header>
+
+    <div class="mood-buttons">
+        <button id="happy-btn" onclick="generateJoke('happy')">😊 Happy</button>
+        <button id="sad-btn" onclick="generateJoke('sad')">😢 Sad</button>
+        <button id="excited-btn" onclick="generateJoke('excited')">🎉 Excited</button>
+        <button id="tired-btn" onclick="generateJoke('tired')">😴 Tired</button>
+    </div>
+
+    <div id="joke-display">Your joke will appear here...</div>
+
+    <script>
+        const jokes = {
+            happy: [
+                "Why don't eggs tell jokes? They'd crack up!",
+                "Why do you have to be careful about what you say around skeletons? They don't have the guts!",
+                "Why did the scarecrow win an award? He was outstanding in his field!",
+                "What do you call a cheese that isn't yours? Nacho cheese!"
+            ],
+            sad: [
+                "What did the cookie say to the fortune teller? You're crumbling my future!",
+                "Why did the bear have no teeth? He was a gummy bear!",
+                "What do you call a fake noodle? An impasta!"
+            ],
+            excited: [
+                "Why did the math book look sad? Because it had too many problems!",
+                "What do you call a dinosaur that crashes his car? Tyrannosaurus wrecks!",
+                "Why did the golfer bring two pairs of pants? In case he got a hole in one!"
+            ],
+            tired: [
+                "I'm so tired, my bed just gave me an ultimatum: You come to me or I'll come to you.",
+                "I’m so tired, if sleep were a currency, I’d be a millionaire by now.",
+                "What do you call a sleeping bull? A bulldozer!"
+            ]
+        };
+
+        function generateJoke(mood) {
+            const jokeArray = jokes[mood];
+            const randomIndex = Math.floor(Math.random() * jokeArray.length);
+            const jokeDisplay = document.getElementById('joke-display');
+            jokeDisplay.textContent = jokeArray[randomIndex];
+        }
+    </script>
+</body>
+</html>
